@@ -4,12 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PySDL3"
-description = "A pure Python wrapper for SDL3."
+description = "A Python wrapper for SDL3 wasm."
 readme = {file = "README.md", content-type = "text/markdown"}
 authors = [
-    {name = "Yusuf Rençber", email = "aermoss.0@gmail.com"}
+    {name = "pygame-web", email = "pgw@example.com"}
 ]
-dependencies = ["requests", "aiohttp", "packaging"]
+dependencies = ["packaging","micropip","platform_wasm","microfix"]
 dynamic = ["version"]
 classifiers = [
     "Development Status :: 4 - Beta",
@@ -26,15 +26,19 @@ classifiers = [
 ]
 
 [project.urls]
-Repository = "https://github.com/Aermoss/PySDL3"
-Issues = "https://github.com/Aermoss/PySDL3/issues"
+Repository = "https://github.com/pygame-web/PySDL3-wasm"
+Issues = "https://github.com/pygame-web/PySDL3-wasm/issues"
 
 [tool.setuptools]
 packages = ["sdl3"]
 include-package-data = true
 
+
 [tool.setuptools.package-data]
-"sdl3" = ["*.py"]
+"sdl3" = ["*.py", "*.so"]
 
 [tool.setuptools.dynamic]
 version = {attr = "sdl3.__version__"}
+
+[bdist_wheel]
+py-limited-api = "cp311"
